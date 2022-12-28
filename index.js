@@ -13,13 +13,13 @@ let tweetsData = []
 // console.log(`gottenSavedTweetsData: `, gottenSavedTweetsData)
 
 if(gottenSavedTweetsData) {
-    console.log("retrieving save data")
+    // console.log("retrieving save data")
     tweetsData = gottenSavedTweetsData
 } else {
-    console.log("using database")
+    // console.log("using database")
     tweetsData = tweetsDatabase
 }
-console.log(`tweetsData: `,tweetsData)
+// console.log(`tweetsData: `,tweetsData)
 
 document.addEventListener('click', function(e){
     if(e.target.dataset.like){
@@ -50,7 +50,7 @@ document.addEventListener('click', function(e){
         handleClearBtnClick()
     }
     else if(e.target) {
-        console.log(`e.target: `, e.target)
+        // console.log(`e.target: `, e.target)
     }
 })
 
@@ -97,14 +97,14 @@ function handleFocusClick(replyId){
         if(tweetHistory[0] != replyId) tweetHistory.unshift(replyId)
     }
     
-    console.log(`tweetHistory: `,tweetHistory)
+    // console.log(`tweetHistory: `,tweetHistory)
     render(replyId)
     document.getElementById(`replies-${replyId}`).classList.remove('hidden')
 }
 
 function handleDeleteClick(replyId){
     const deleteTweetIndex = tweetsData.findIndex(tweet => tweet.uuid === replyId)
-    console.log(`deleteTweetIndex`, deleteTweetIndex)
+    // console.log(`deleteTweetIndex`, deleteTweetIndex)
     tweetsData.splice(deleteTweetIndex, 1)
     saveTweetsData()
     render()
@@ -137,11 +137,11 @@ function handleBackBtnClick(){
 
 function handleReplyBtnClick(replyId){
     const replyInput = document.getElementById(`reply-input-${replyId}`)
-    console.log(`replyInput: `,replyInput)
+    // console.log(`replyInput: `,replyInput)
     
     if(replyInput.value) {
         const tweetsDataIndex = tweetsData.findIndex(tweet => tweet.uuid === replyId)
-        console.log(`tweetsDataIndex: `,tweetsDataIndex)
+        // console.log(`tweetsDataIndex: `,tweetsDataIndex)
         tweetsData[tweetsDataIndex].replies.unshift({
             handle: `@Scrimba`,
             profilePic: `images/scrimbalogo.png`,
@@ -153,7 +153,7 @@ function handleReplyBtnClick(replyId){
 }
 
 function handleClearBtnClick(){
-    console.log("clearing save data")
+    // console.log("clearing save data")
     localStorage.clear()
     // render()
 }
@@ -183,7 +183,7 @@ function getFeedHtml(topTweetUuid){
         focusReturn.innerHTML = ``
     }
     
-    console.log(`tweetsFeedData: `, tweetsFeedData)
+    // console.log(`tweetsFeedData: `, tweetsFeedData)
     
     let feedHtml = ``
     
